@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://tested-homework-translation-june.trycloudflare.com">
-<title>Nextcloud Redirect</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>ETA Cloud</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: linear-gradient(135deg,#667eea,#764ba2); }
+        .box { background: white; padding: 40px; border-radius: 12px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,.2); }
+        h1 { margin: 0 0 10px; color: #333; }
+        p  { color: #666; font-size: 14px; }
+        .spin { border: 4px solid #eee; border-top-color: #667eea; border-radius: 50%; width: 40px; height: 40px; animation: s 1s linear infinite; margin: 20px auto; }
+        @keyframes s { to { transform: rotate(360deg); } }
+        small { color: #aaa; font-size: 11px; word-break: break-all; display: block; margin-top: 8px; }
+    </style>
 </head>
 <body>
-
-<h1>Redirect automatico...</h1>
-
+<div class="box">
+    <h1>☁️ ETA Cloud</h1>
+    <p>Connessione in corso...</p>
+    <div class="spin" id="sp"></div>
+    <small id="u"></small>
+</div>
 <script>
-window.location.href="https://tested-homework-translation-june.trycloudflare.com";
+    fetch('https://raw.githubusercontent.com/Gabry2317/cloud/main/cloud.json?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => r.json())
+        .then(d => { document.getElementById('u').textContent = d.url; setTimeout(() => location.replace(d.url), 200); })
+        .catch(e => { document.querySelector('p').textContent = '❌ ' + e; document.getElementById('sp').style.display = 'none'; });
 </script>
-
 </body>
 </html>
